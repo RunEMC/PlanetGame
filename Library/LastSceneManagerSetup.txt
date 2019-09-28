@@ -1,5 +1,9 @@
 sceneSetups:
-- path: Assets/RoundPlatformer/DEMO/Demo_RoundPlatformer.unity
+- path: Assets/Demo_RoundPlatformer.unity
   isLoaded: 1
   isActive: 1
+  isSubScene: 0
+- path: Assets/all i did ;0.unity
+  isLoaded: 0
+  isActive: 0
   isSubScene: 0

@@ -32,8 +32,13 @@ public class Player_Movement : MonoBehaviour{
 	private float AngularSpeedLimitation;
 
 
+    public void SetOwnCenterOfGravity(GameObject gravObject)
+    {
+        Debug.Log("Setting grav");
+        this.CenterOfGravity = gravObject;
+    }
 
-	void Start() {
+    void Start() {
 		RB2B = GetComponent<Rigidbody2D>();
 		PlayerSpriteRenderer = GetComponent<SpriteRenderer>();
 		anim = GetComponent<Animator>();
