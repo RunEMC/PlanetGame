@@ -7,6 +7,9 @@ public class interactWithPlayer : MonoBehaviour
     public GameObject hintE;
     public GameObject item;
     public int itemCount = 0;
+    public int speedInvestment = 0;
+    public int speedInvestNeededToLvl = 3;
+
     private void Start()
     {   
         hintE = GameObject.Find("PressE");
@@ -28,7 +31,38 @@ public class interactWithPlayer : MonoBehaviour
                 Destroy(item);
                 itemCount += 1;
                 GameObject.Find("numberOfItems").GetComponent<Text>().text = "x " + itemCount.ToString();
-              }
+            }
+        }
+        else if (name.StartsWith("Statue"))
+        {
+            string statueType = name.Split('_')[1];
+            Debug.Log(statueType);
+            hintE.SetActive(true);
+            if (Input.GetKeyDown(KeyCode.E))
+            {
+                if (itemCount > 0)
+                {
+                    itemCount--;
+                    GameObject.Find("numberOfItems").GetComponent<Text>().text = "x " + itemCount.ToString();
+                    hintE.SetActive(false);
+                    //Debug.Log("Invest LESS");
+                    switch (statueType)
+                    {
+                        case "Speed":
+                            Debug.Log("Invest more");
+                            speedInvestment++;
+                            if (speedInvestment >= speedInvestNeededToLvl)
+                            {
+                                //Debug.Log("MoreSpd");
+                                speedInvestment = 0;
+                                GameObject.Find("Player").GetComponent<Player_Movement>().ChangePlayerSettings(1, 0, 0, 0);
+                            }
+                            break;
+                        default:
+                            break;
+                    }
+                }
+            }
         }
         else
         {
