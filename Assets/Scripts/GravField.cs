@@ -9,7 +9,7 @@ public class GravField : MonoBehaviour
     public string PlayerTag = "Player";
     // Start is called before the first frame update
     void Start()
-    {   
+    {  
         gravObject = gameObject.transform.Find("CenterOfGravity").gameObject;
         player = GameObject.FindGameObjectWithTag(PlayerTag);
     }
