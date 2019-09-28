@@ -1,0 +1,5 @@
+sceneSetups:
+- path: Assets/RoundPlatformer/DEMO/Demo_RoundPlatformer.unity
+  isLoaded: 1
+  isActive: 1
+  isSubScene: 0
