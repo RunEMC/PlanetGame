@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
+//using UnityEngine.UI;
 public class interactWithPlayer : MonoBehaviour
 {
     public GameObject hintE;
@@ -28,9 +28,15 @@ public class interactWithPlayer : MonoBehaviour
             {
                 Debug.Log("Picked!");
                 hintE.SetActive(false);
-                Destroy(item);
+                item.transform.SetParent(gameObject.transform);
+                Vector3 topOfHead = gameObject.transform.position;
+                topOfHead.y += 5;
+                item.transform.position = topOfHead;
+                item.GetComponent<GravityTowardPoint>().SetCenterOfGrav(gameObject, 25);
+                //item.transform.position. += 5; 
+                //Destroy(item);
                 itemCount += 1;
-                GameObject.Find("numberOfItems").GetComponent<Text>().text = "x " + itemCount.ToString();
+                //GameObject.Find("numberOfItems").GetComponent<Text>().text = "x " + itemCount.ToString();
             }
         }
         else if (name.StartsWith("Statue"))
@@ -43,7 +49,7 @@ public class interactWithPlayer : MonoBehaviour
                 if (itemCount > 0)
                 {
                     itemCount--;
-                    GameObject.Find("numberOfItems").GetComponent<Text>().text = "x " + itemCount.ToString();
+                    //GameObject.Find("numberOfItems").GetComponent<Text>().text = "x " + itemCount.ToString();
                     hintE.SetActive(false);
                     //Debug.Log("Invest LESS");
                     switch (statueType)

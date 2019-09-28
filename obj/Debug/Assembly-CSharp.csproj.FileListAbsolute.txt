@@ -1,0 +1,3 @@
+D:\Side Projects\PlanetGame\PlanetGame\obj\Debug\Assembly-CSharp.csprojResolveAssemblyReference.cache
+D:\Side Projects\PlanetGame\PlanetGame\obj\Debug\Assembly-CSharp.dll
+D:\Side Projects\PlanetGame\PlanetGame\obj\Debug\Assembly-CSharp.pdb
