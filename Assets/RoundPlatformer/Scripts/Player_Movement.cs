@@ -38,6 +38,14 @@ public class Player_Movement : MonoBehaviour{
         this.CenterOfGravity = gravObject;
     }
 
+    public void ChangePlayerSettings(float speed, float maxSpeed, float jmpSpeed, int jmps)
+    {
+        PlayerSpeed += speed;
+        MaxSpeed += maxSpeed;
+        JumpSpeed += jmpSpeed;
+        NumberOfJump += jmps;
+    }
+
     void Start() {
 		RB2B = GetComponent<Rigidbody2D>();
 		PlayerSpriteRenderer = GetComponent<SpriteRenderer>();

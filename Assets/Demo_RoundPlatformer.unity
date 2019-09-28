@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.38810098, g: 0.40193143, b: 0.39059585, a: 1}
+  m_IndirectSpecularColor: {r: NaN, g: Infinity, b: NaN, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -431,6 +431,113 @@ Transform:
   m_Father: {fileID: 601286611}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &85102010
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 85102011}
+  - component: {fileID: 85102015}
+  - component: {fileID: 85102014}
+  m_Layer: 0
+  m_Name: Statue_Speed
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &85102011
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 85102010}
+  m_LocalRotation: {x: -0, y: -0, z: 0.09064412, w: 0.9958834}
+  m_LocalPosition: {x: -1.8900005, y: 12.94, z: 0.6945114}
+  m_LocalScale: {x: 1.265, y: 1.265, z: 1.265}
+  m_Children: []
+  m_Father: {fileID: 800852522}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 10.401}
+--- !u!61 &85102014
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 85102010}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 1, y: 1}
+    newSize: {x: 1, y: 1}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1}
+  m_EdgeRadius: 0
+--- !u!212 &85102015
+SpriteRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 85102010}
+  m_Enabled: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
+  m_DynamicOccludee: 1
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 0
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_Sprite: {fileID: 21300000, guid: 08af9c3e596493d42af92be2a37078b3, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_FlipX: 0
+  m_FlipY: 0
+  m_DrawMode: 0
+  m_Size: {x: 1, y: 1}
+  m_AdaptiveModeThreshold: 0.5
+  m_SpriteTileMode: 0
+  m_WasSpriteAssigned: 1
+  m_MaskInteraction: 0
+  m_SpriteSortPoint: 0
 --- !u!1 &88688987
 GameObject:
   m_ObjectHideFlags: 0
@@ -2320,6 +2427,8 @@ MonoBehaviour:
   hintE: {fileID: 0}
   item: {fileID: 0}
   itemCount: 0
+  speedInvestment: 0
+  speedInvestNeededToLvl: 3
 --- !u!61 &601286613
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -2521,6 +2630,7 @@ Transform:
   - {fileID: 1906582951}
   - {fileID: 506553561}
   - {fileID: 1272237099}
+  - {fileID: 85102011}
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -5619,6 +5729,26 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 8.588176
       objectReference: {fileID: 0}
+    - target: {fileID: 3340378101078080033, guid: a65a10546e141a245860c239c6f89151,
+        type: 3}
+      propertyPath: orthographic size
+      value: 6.129129
+      objectReference: {fileID: 0}
+    - target: {fileID: 3340378101078080033, guid: a65a10546e141a245860c239c6f89151,
+        type: 3}
+      propertyPath: m_BackGroundColor.r
+      value: 0.21359916
+      objectReference: {fileID: 0}
+    - target: {fileID: 3340378101078080033, guid: a65a10546e141a245860c239c6f89151,
+        type: 3}
+      propertyPath: m_BackGroundColor.g
+      value: 0.46334603
+      objectReference: {fileID: 0}
+    - target: {fileID: 3340378101078080033, guid: a65a10546e141a245860c239c6f89151,
+        type: 3}
+      propertyPath: m_BackGroundColor.b
+      value: 0.754717
+      objectReference: {fileID: 0}
     - target: {fileID: 3340378101270038801, guid: a65a10546e141a245860c239c6f89151,
         type: 3}
       propertyPath: CenterOfGravity
@@ -5704,26 +5834,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.z
       value: 1.163
-      objectReference: {fileID: 0}
-    - target: {fileID: 3340378101078080033, guid: a65a10546e141a245860c239c6f89151,
-        type: 3}
-      propertyPath: orthographic size
-      value: 6.129129
-      objectReference: {fileID: 0}
-    - target: {fileID: 3340378101078080033, guid: a65a10546e141a245860c239c6f89151,
-        type: 3}
-      propertyPath: m_BackGroundColor.r
-      value: 0.21359916
-      objectReference: {fileID: 0}
-    - target: {fileID: 3340378101078080033, guid: a65a10546e141a245860c239c6f89151,
-        type: 3}
-      propertyPath: m_BackGroundColor.g
-      value: 0.46334603
-      objectReference: {fileID: 0}
-    - target: {fileID: 3340378101078080033, guid: a65a10546e141a245860c239c6f89151,
-        type: 3}
-      propertyPath: m_BackGroundColor.b
-      value: 0.754717
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a65a10546e141a245860c239c6f89151, type: 3}
