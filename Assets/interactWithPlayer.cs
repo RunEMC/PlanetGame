@@ -6,6 +6,7 @@ public class interactWithPlayer : MonoBehaviour
 {
     public GameObject hintE;
     public GameObject item;
+    List<GameObject> grabbedItems;
     public int itemCount = 0;
     public int speedInvestment = 0;
     public int speedInvestNeededToLvl = 3;
@@ -14,6 +15,7 @@ public class interactWithPlayer : MonoBehaviour
     {   
         hintE = GameObject.Find("PressE");
         hintE.SetActive(false);
+        grabbedItems = new List<GameObject>();
      }
 
     private void OnTriggerStay2D(Collider2D collision)
@@ -28,9 +30,16 @@ public class interactWithPlayer : MonoBehaviour
             {
                 Debug.Log("Picked!");
                 hintE.SetActive(false);
-                Destroy(item);
+                //Destroy(item);
                 itemCount += 1;
                 GameObject.Find("numberOfItems").GetComponent<Text>().text = "x " + itemCount.ToString();
+                item.transform.SetParent(gameObject.transform);
+                //Vector3 topOfHead = gameObject.transform.position;
+                //topOfHead.x += 2;
+                //item.transform.position = topOfHead;
+                item.name = "AcquiredItem";
+                grabbedItems.Add(item);
+                item.GetComponent<GravityTowardPoint>().SetOwnCenterOfGravity(gameObject, 25);
             }
         }
         else if (name.StartsWith("Statue"))
@@ -44,6 +53,8 @@ public class interactWithPlayer : MonoBehaviour
                 {
                     itemCount--;
                     GameObject.Find("numberOfItems").GetComponent<Text>().text = "x " + itemCount.ToString();
+                    Destroy(grabbedItems[0]);
+                    grabbedItems.RemoveAt(0);
                     hintE.SetActive(false);
                     //Debug.Log("Invest LESS");
                     switch (statueType)
