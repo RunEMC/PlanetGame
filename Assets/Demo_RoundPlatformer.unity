@@ -2319,7 +2319,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hintE: {fileID: 0}
   item: {fileID: 0}
-  count: 0
+  itemCount: 0
 --- !u!61 &601286613
 BoxCollider2D:
   m_ObjectHideFlags: 0

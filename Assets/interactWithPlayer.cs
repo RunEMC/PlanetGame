@@ -6,7 +6,7 @@ public class interactWithPlayer : MonoBehaviour
 {
     public GameObject hintE;
     public GameObject item;
-    public int count = 0;
+    public int itemCount = 0;
     private void Start()
     {   
         hintE = GameObject.Find("PressE");
@@ -26,8 +26,8 @@ public class interactWithPlayer : MonoBehaviour
                 Debug.Log("Picked!");
                 hintE.SetActive(false);
                 Destroy(item);
-                count += 1;
-                GameObject.Find("numberOfItems").GetComponent<Text>().text = "x " +count.ToString();
+                itemCount += 1;
+                GameObject.Find("numberOfItems").GetComponent<Text>().text = "x " + itemCount.ToString();
               }
         }
         else
