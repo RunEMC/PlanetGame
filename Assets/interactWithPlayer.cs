@@ -1,28 +1,43 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.UI;
 public class interactWithPlayer : MonoBehaviour
 {
-
-    private Collider2D collider;
-    // Start is called before the first frame update
-    void Start()
+    public GameObject hintE;
+    public GameObject item;
+    public int count = 0;
+    private void Start()
     {   
-       //collider = getComp
-       
-    }
+        hintE = GameObject.Find("PressE");
+        hintE.SetActive(false);
+     }
 
-    // Update is called once per frame
-    void Update()
+    private void OnTriggerStay2D(Collider2D collision)
     {
-
-        //this.
+        item = collision.gameObject;
+        string name = item.name;
+        if (name.StartsWith("Item"))
+        {
+            Debug.Log("can be picked");
+            hintE.SetActive(true);
+            if (Input.GetKeyDown(KeyCode.E))
+            {
+                Debug.Log("Picked!");
+                hintE.SetActive(false);
+                Destroy(item);
+                count += 1;
+                GameObject.Find("numberOfItems").GetComponent<Text>().text = "x " +count.ToString();
+              }
+        }
+        else
+        {
+            hintE.SetActive(false);
+        }
     }
-
-    private void OnTriggerEnter(Collider other)
+    private void OnTriggerExit2D(Collider2D collision)
     {
-        //Debug.log()
+        hintE.SetActive(false);
     }
 }   
 
