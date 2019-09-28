@@ -109,7 +109,7 @@ public class Player_Movement : MonoBehaviour{
 			localvelocity.x = localvelocity.x * 0.5F;
 			RB2B.velocity = transform.TransformDirection(localvelocity);
 
-			//anim.SetBool("PlayerMoving", false);
+			anim.SetBool("PlayerMoving", false);
 		}
 	}
 
@@ -135,7 +135,7 @@ public class Player_Movement : MonoBehaviour{
 		}
 		else {
 			IsGrounded = false;
-			//anim.SetBool("PlayerJumping", true);
+			anim.SetBool("PlayerJumping", true);
 		}
 	}
 
