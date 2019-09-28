@@ -10,6 +10,7 @@ public class interactWithPlayer : MonoBehaviour
     public int itemCount = 0;
     public int speedInvestment = 0;
     public int speedInvestNeededToLvl = 3;
+    public int maxItems = 1;
 
     private void Start()
     {   
@@ -26,7 +27,7 @@ public class interactWithPlayer : MonoBehaviour
         {
             Debug.Log("can be picked");
             hintE.SetActive(true);
-            if (Input.GetKeyDown(KeyCode.E))
+            if (Input.GetKeyDown(KeyCode.E) && itemCount < maxItems)
             {
                 Debug.Log("Picked!");
                 hintE.SetActive(false);
