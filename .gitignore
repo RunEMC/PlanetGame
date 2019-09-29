@@ -2,3 +2,9 @@ Assembly-CSharp.csproj
 Library/EditorInstance.json
 /Temp
 /.vs
+/Library
+/Logs
+/obj
+/Packages
+/ProjectSettings
+
