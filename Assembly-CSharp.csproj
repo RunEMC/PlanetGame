@@ -8,7 +8,8 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProductVersion>10.0.20506</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <RootNamespace></RootNamespace>
+    <RootNamespace>
+    </RootNamespace>
     <ProjectGuid>{19399B5D-7ED4-594E-7D1E-F188DC4F1565}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
@@ -75,6 +76,7 @@
     <Compile Include="Assets\RoundPlatformer\Scripts\RoundPlatformer_Component.cs" />
     <Compile Include="Assets\Scripts\GravField.cs" />
     <Compile Include="Assets\Scripts\GravityTowardPointPlayer.cs" />
+    <Compile Include="Assets\Scripts\ItemSpawner.cs" />
     <Compile Include="Assets\Scripts\player.cs" />
     <None Include="Assets\RoundPlatformer\DEMO\PlaceHolder_Graphics\License.txt" />
     <None Include="Assets\dinoCharactersVersion1.1\changelog.txt" />
