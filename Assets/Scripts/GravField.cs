@@ -24,7 +24,10 @@ public class GravField : MonoBehaviour
     {
         //var centerOfGrav = gameobject.transform.Find("CenterOfGravity");
         Debug.Log("Entered", gravObject);
-        player.GetComponent<Player_Movement>().SetOwnCenterOfGravity(gravObject);
+        if (other.gameObject == player)
+        {
+            player.GetComponent<Player_Movement>().SetOwnCenterOfGravity(gravObject);
+        }
     }
 
     void OnCollisionEnter2D(Collision2D col)

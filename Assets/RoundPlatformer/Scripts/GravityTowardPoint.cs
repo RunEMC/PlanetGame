@@ -28,6 +28,11 @@ public class GravityTowardPoint : MonoBehaviour{
 	
 	}
 
+    public void SetOwnCenterOfGravity(GameObject grav, float force)
+    {
+        this.CenterOfGravity = grav;
+        this.GravityForce = force;
+    }
 
 	private void Update() {
 		if (CenterOfGravity != null){

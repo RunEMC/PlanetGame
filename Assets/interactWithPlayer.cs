@@ -8,6 +8,8 @@ public class interactWithPlayer : MonoBehaviour
     public GameObject item;
     public GameObject speedBoost;
     public GameObject jumpBoost;
+    List<GameObject> grabbedItems;
+    public int maxItems = 1;
     public int itemCount = 0;
     public int speedInvestment = 0;
     public int speedInvestNeededToLvl = 4;
@@ -20,6 +22,7 @@ public class interactWithPlayer : MonoBehaviour
         speedBoost = GameObject.Find("speedBoost");
         jumpBoost = GameObject.Find("jumpBoost");
         hintE.SetActive(false);
+        grabbedItems = new List<GameObject>();
         speedBoost.GetComponent<Text>().text = "Speed Bost: " + speedInvestment.ToString()+ "/" + speedInvestNeededToLvl.ToString();
         jumpBoost.GetComponent<Text>().text = "Jump Bost: " + jumpInvestment.ToString() + "/" + jumpInvestNeededToLvl.ToString();
     }
@@ -37,9 +40,17 @@ public class interactWithPlayer : MonoBehaviour
             {
                 Debug.Log("Picked!");
                 hintE.SetActive(false);
-                Destroy(item);
+                //Destroy(item);
                 itemCount += 1;
                 GameObject.Find("numberOfItems").GetComponent<Text>().text = "x " + itemCount.ToString();
+                //item.transform.SetParent(gameObject.transform);
+                //Vector3 topOfHead = gameObject.transform.position;
+                //topOfHead.x += 2;
+                //item.transform.position = topOfHead;
+                GameObject topOfHead = gameObject.transform.Find("TopOfHead").gameObject;
+                item.name = "AcquiredItem";
+                grabbedItems.Add(item);
+                item.GetComponent<GravityTowardPoint>().SetOwnCenterOfGravity(topOfHead, 25);
             }
         }
         else if (name.StartsWith("Statue"))
@@ -54,6 +65,8 @@ public class interactWithPlayer : MonoBehaviour
                 {
                     itemCount--;
                     GameObject.Find("numberOfItems").GetComponent<Text>().text = "x " + itemCount.ToString();
+                    Destroy(grabbedItems[0]);
+                    grabbedItems.RemoveAt(0);
                     hintE.SetActive(false);
                     //Debug.Log("Invest LESS");
                     switch (statueType)
