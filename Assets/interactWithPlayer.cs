@@ -6,6 +6,7 @@ public class interactWithPlayer : MonoBehaviour
 {
     public GameObject hintE;
     public GameObject item;
+    public GameObject itemBoost;
     public GameObject speedBoost;
     public GameObject jumpBoost;
     List<GameObject> grabbedItems;
@@ -21,10 +22,11 @@ public class interactWithPlayer : MonoBehaviour
         hintE = GameObject.Find("PressE");
         speedBoost = GameObject.Find("speedBoost");
         jumpBoost = GameObject.Find("jumpBoost");
+        itemBoost = GameObject.Find("numberOfItems");
         hintE.SetActive(false);
         grabbedItems = new List<GameObject>();
-        speedBoost.GetComponent<Text>().text = "Speed Bost: " + speedInvestment.ToString()+ "/" + speedInvestNeededToLvl.ToString();
-        jumpBoost.GetComponent<Text>().text = "Jump Bost: " + jumpInvestment.ToString() + "/" + jumpInvestNeededToLvl.ToString();
+        Update();
+       
     }
 
     private void OnTriggerStay2D(Collider2D collision)
@@ -42,11 +44,7 @@ public class interactWithPlayer : MonoBehaviour
                 hintE.SetActive(false);
                 //Destroy(item);
                 itemCount += 1;
-                GameObject.Find("numberOfItems").GetComponent<Text>().text = "x " + itemCount.ToString();
-                //item.transform.SetParent(gameObject.transform);
-                //Vector3 topOfHead = gameObject.transform.position;
-                //topOfHead.x += 2;
-                //item.transform.position = topOfHead;
+                Update();
                 GameObject topOfHead = gameObject.transform.Find("TopOfHead").gameObject;
                 item.name = "AcquiredItem";
                 grabbedItems.Add(item);
@@ -64,7 +62,7 @@ public class interactWithPlayer : MonoBehaviour
                 if (itemCount > 0)
                 {
                     itemCount--;
-                    GameObject.Find("numberOfItems").GetComponent<Text>().text = "x " + itemCount.ToString();
+                    Update();
                     Destroy(grabbedItems[0]);
                     grabbedItems.RemoveAt(0);
                     hintE.SetActive(false);
@@ -81,13 +79,23 @@ public class interactWithPlayer : MonoBehaviour
                                 GameObject.Find("Player").GetComponent<Player_Movement>().ChangePlayerSettings(1, 0, 0, 0);
                             }
                             break;
+                        case "Item":
+                            maxItems++;
+                            break;
+                        case "Jump":
+                            jumpInvestment++;
+                            if (jumpInvestment >= jumpInvestNeededToLvl)
+                            {
+                                jumpInvestment = 0;
+                                GameObject.Find("Player").GetComponent<Player_Movement>().ChangePlayerSettings(0, 0, 0.3f, 0);
+                            }
+                            break;
                         default:
                             break;
                     }
                 }
             }
-            speedBoost.GetComponent<Text>().text = "Speed Bost: " + speedInvestment.ToString() + "/" + speedInvestNeededToLvl.ToString();
-            jumpBoost.GetComponent<Text>().text = "Jump Bost: " + jumpInvestment.ToString() + "/" + jumpInvestNeededToLvl.ToString();
+            Update();
         }
         else
         {
@@ -97,8 +105,12 @@ public class interactWithPlayer : MonoBehaviour
     private void OnTriggerExit2D(Collider2D collision)
     {
         hintE.SetActive(false);
-       
     }
+    private void Update()
+    {
+        itemBoost.GetComponent<Text>().text = "Item: " + itemCount.ToString() + "/" + maxItems.ToString();
+        speedBoost.GetComponent<Text>().text = "Speed Bost: " + speedInvestment.ToString() + "/" + speedInvestNeededToLvl.ToString();
+        jumpBoost.GetComponent<Text>().text = "Jump Bost: " + jumpInvestment.ToString() + "/" + jumpInvestNeededToLvl.ToString();
 
+    }
 }   
-

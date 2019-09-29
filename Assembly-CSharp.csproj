@@ -75,6 +75,7 @@
     <Compile Include="Assets\RoundPlatformer\Scripts\RoundPlatformer_Component.cs" />
     <Compile Include="Assets\Scripts\GravField.cs" />
     <Compile Include="Assets\Scripts\GravityTowardPointPlayer.cs" />
+    <Compile Include="Assets\Scripts\ItemSpawner.cs" />
     <Compile Include="Assets\Scripts\player.cs" />
     <None Include="Assets\RoundPlatformer\DEMO\PlaceHolder_Graphics\License.txt" />
     <None Include="Assets\dinoCharactersVersion1.1\changelog.txt" />
