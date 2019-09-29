@@ -9,6 +9,7 @@ public class interactWithPlayer : MonoBehaviour
     public GameObject itemBoost;
     public GameObject speedBoost;
     public GameObject jumpBoost;
+    public GameObject enemy;
     List<GameObject> grabbedItems;
     public int maxItems = 1;
     public int itemCount = 0;
@@ -16,7 +17,13 @@ public class interactWithPlayer : MonoBehaviour
     public int speedInvestNeededToLvl = 4;
     public int jumpInvestment = 0;
     public int jumpInvestNeededToLvl = 3;
+    public bool talking = false;
 
+    public GameObject talk1;
+    public GameObject talk2;
+    public GameObject talk3;
+    public GameObject talk4;
+    public GameObject talk5;
     private void Start()
     {   
         hintE = GameObject.Find("PressE");
@@ -26,11 +33,24 @@ public class interactWithPlayer : MonoBehaviour
         hintE.SetActive(false);
         grabbedItems = new List<GameObject>();
         Update();
-       
+        talk1 = GameObject.Find("talk1");
+        talk1.SetActive(false);
+        talk2 = GameObject.Find("talk2");
+        talk2.SetActive(false);
+        talk3 = GameObject.Find("talk3");
+        talk3.SetActive(false);
+        talk4 = GameObject.Find("talk4");
+        talk4.SetActive(false);
+        talk5 = GameObject.Find("talk5");
+        talk5.SetActive(false);
     }
 
-    private void OnTriggerStay2D(Collider2D collision)
+    private void OnTriggerEnter2D(Collider2D collision)
     {
+        talking = false;
+    }
+    private void OnTriggerStay2D(Collider2D collision)
+    {   
         item = collision.gameObject;
         string name = item.name;
         if (name.StartsWith("Item"))
@@ -101,14 +121,59 @@ public class interactWithPlayer : MonoBehaviour
         {
             hintE.SetActive(true);
             hintE.GetComponent<Text>().text = "Press E to pick ur mother ;3 ";
+            if (Input.GetKeyDown(KeyCode.E))
+            { }
+
+        }
+        else if (name.StartsWith("enemy"))
+        {
+            Debug.Log(talking);
+            if (talking == false) { 
+                hintE.SetActive(true);
+                hintE.GetComponent<Text>().text = "Press E to Talk";
+                if (Input.GetKeyDown(KeyCode.E))
+                {
+                    talking = true;
+                    hintE.GetComponent<Text>().text = "Are u my mom? ";
+                    string str =name.Split('_')[1];
+                  
+                    if (int.Parse(str) == 1)
+                    {
+                        enemy = talk1;
+                    }
+                    else if(int.Parse(str) == 2)
+                    {
+                        enemy = talk2;
+                    }else if (int.Parse(str) == 3)
+                    {
+                        enemy = talk3;
+                    }else if (int.Parse(str) == 4)
+                    {
+                        enemy = talk4;
+                    }else if (int.Parse(str) == 5)
+                    {
+                        enemy = talk5;
+                    }
+                    else{
+
+                    }
+                    enemy.SetActive(true);
+                }
+            }
+            else
+            {
+                hintE.GetComponent<Text>().text = "Are u my mom? ";
+            }
         }
         else
         {
-            hintE.SetActive(false);
+       
         }
     }
     private void OnTriggerExit2D(Collider2D collision)
     {
+        //enemy.SetActive(false);
+        talking = false;
         hintE.SetActive(false);
     }
     private void Update()
