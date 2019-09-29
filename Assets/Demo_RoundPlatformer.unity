@@ -3163,6 +3163,7 @@ GameObject:
   - component: {fileID: 800852522}
   - component: {fileID: 800852524}
   - component: {fileID: 800852523}
+  - component: {fileID: 800852525}
   m_Layer: 0
   m_Name: Planet1
   m_TagString: Untagged
@@ -3218,6 +3219,23 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   PlayerTag: Player
+--- !u!114 &800852525
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 800852521}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 324b9f57c4094e24ea8869ef58970d71, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemToSpawn: {fileID: 3494037192800510798, guid: f4d9c68c2bd24b0489a7b0702fd5272f,
+    type: 3}
+  radius: 0
+  timeBetweenSpawn: 500
+  timeElapsed: 0
 --- !u!1 &856811096
 GameObject:
   m_ObjectHideFlags: 0
