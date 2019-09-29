@@ -13,7 +13,7 @@ public class ItemSpawner : MonoBehaviour
     void Start()
     {
         if (itemToSpawn == null) itemToSpawn = GameObject.Find("Item");
-        if(radius == 0) radius = gameObject.transform.lossyScale.z + 15;
+        if(radius <= 0) radius = gameObject.transform.lossyScale.z + 15;
     }
 
     // Update is called once per frame
