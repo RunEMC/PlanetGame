@@ -18,7 +18,7 @@ public class interactWithPlayer : MonoBehaviour
     public int jumpInvestment = 0;
     public int jumpInvestNeededToLvl = 3;
     public bool talking = false;
-
+    public GameObject uwin;
     public GameObject talk1;
     public GameObject talk2;
     public GameObject talk3;
@@ -30,6 +30,8 @@ public class interactWithPlayer : MonoBehaviour
         speedBoost = GameObject.Find("speedBoost");
         jumpBoost = GameObject.Find("jumpBoost");
         itemBoost = GameObject.Find("numberOfItems");
+        uwin = GameObject.Find("uwin");
+        uwin.SetActive(false);
         hintE.SetActive(false);
         grabbedItems = new List<GameObject>();
         Update();
@@ -122,7 +124,9 @@ public class interactWithPlayer : MonoBehaviour
             hintE.SetActive(true);
             hintE.GetComponent<Text>().text = "Press E to pick ur mother ;3 ";
             if (Input.GetKeyDown(KeyCode.E))
-            { }
+            {
+                uwin.SetActive(true);
+            }
 
         }
         else if (name.StartsWith("enemy"))
