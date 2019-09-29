@@ -29,6 +29,7 @@ public class ItemSpawner : MonoBehaviour
             //Debug.Log(randomPoint.x);
             //Debug.Log(randomPoint.z);
             itemToSpawn.GetComponent<GravityTowardPoint>().SetOwnCenterOfGravity(gameObject.transform.Find("CenterOfGravity").gameObject, 1);
+            itemToSpawn.transform.SetParent(gameObject.transform);
             Instantiate(itemToSpawn, randomPoint, Quaternion.identity);
             timeElapsed = 0;
         }
