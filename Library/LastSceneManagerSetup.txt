@@ -1,5 +1,5 @@
 sceneSetups:
-- path: Assets/Demo_RoundPlatformer.unity
+- path: Assets/pressEtopickupurmother.unity
   isLoaded: 1
   isActive: 1
   isSubScene: 0

@@ -97,6 +97,11 @@ public class interactWithPlayer : MonoBehaviour
             }
             Update();
         }
+        else if (name.StartsWith("egg"))
+        {
+            hintE.SetActive(true);
+            hintE.GetComponent<Text>().text = "Press E to pick ur mother ;3 ";
+        }
         else
         {
             hintE.SetActive(false);
@@ -108,9 +113,9 @@ public class interactWithPlayer : MonoBehaviour
     }
     private void Update()
     {
-        itemBoost.GetComponent<Text>().text = "Item: " + itemCount.ToString() + "/" + maxItems.ToString();
-        speedBoost.GetComponent<Text>().text = "Speed Bost: " + speedInvestment.ToString() + "/" + speedInvestNeededToLvl.ToString();
-        jumpBoost.GetComponent<Text>().text = "Jump Bost: " + jumpInvestment.ToString() + "/" + jumpInvestNeededToLvl.ToString();
+        itemBoost.GetComponent<Text>().text = "Items: " + itemCount.ToString() + "/" + maxItems.ToString();
+        speedBoost.GetComponent<Text>().text = "Eggs Until Speed Boost: " + speedInvestment.ToString() + "/" + speedInvestNeededToLvl.ToString();
+        jumpBoost.GetComponent<Text>().text = "Eggs Until Jump Boost: " + jumpInvestment.ToString() + "/" + jumpInvestNeededToLvl.ToString();
 
     }
 }   
