@@ -36,7 +36,7 @@ public class interactWithPlayer : MonoBehaviour
             hintE.GetComponent<Text>().text = "Press E to Pick Up";
             Debug.Log("can be picked");
             hintE.SetActive(true);
-            if (Input.GetKeyDown(KeyCode.E))
+            if (Input.GetKeyDown(KeyCode.E) && itemCount < maxItems)
             {
                 Debug.Log("Picked!");
                 hintE.SetActive(false);
