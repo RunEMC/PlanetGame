@@ -5,7 +5,7 @@ using UnityEngine;
 public class ItemSpawner : MonoBehaviour
 {
     public GameObject itemToSpawn;
-    public float radius;
+    public float radius = 0;
     public int timeBetweenSpawn = 500;
     public int timeElapsed = 0;
 
@@ -13,7 +13,7 @@ public class ItemSpawner : MonoBehaviour
     void Start()
     {
         if (itemToSpawn == null) itemToSpawn = GameObject.Find("Item");
-        radius = gameObject.transform.lossyScale.z + 15;
+        if(radius == 0) radius = gameObject.transform.lossyScale.z + 15;
     }
 
     // Update is called once per frame
