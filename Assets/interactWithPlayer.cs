@@ -6,15 +6,23 @@ public class interactWithPlayer : MonoBehaviour
 {
     public GameObject hintE;
     public GameObject item;
+    public GameObject speedBoost;
+    public GameObject jumpBoost;
     public int itemCount = 0;
     public int speedInvestment = 0;
-    public int speedInvestNeededToLvl = 3;
+    public int speedInvestNeededToLvl = 4;
+    public int jumpInvestment = 0;
+    public int jumpInvestNeededToLvl = 3;
 
     private void Start()
     {   
         hintE = GameObject.Find("PressE");
+        speedBoost = GameObject.Find("speedBoost");
+        jumpBoost = GameObject.Find("jumpBoost");
         hintE.SetActive(false);
-     }
+        speedBoost.GetComponent<Text>().text = "Speed Bost: " + speedInvestment.ToString()+ "/" + speedInvestNeededToLvl.ToString();
+        jumpBoost.GetComponent<Text>().text = "Jump Bost: " + jumpInvestment.ToString() + "/" + jumpInvestNeededToLvl.ToString();
+    }
 
     private void OnTriggerStay2D(Collider2D collision)
     {
@@ -22,6 +30,7 @@ public class interactWithPlayer : MonoBehaviour
         string name = item.name;
         if (name.StartsWith("Item"))
         {
+            hintE.GetComponent<Text>().text = "Press E to Pick Up";
             Debug.Log("can be picked");
             hintE.SetActive(true);
             if (Input.GetKeyDown(KeyCode.E))
@@ -35,6 +44,7 @@ public class interactWithPlayer : MonoBehaviour
         }
         else if (name.StartsWith("Statue"))
         {
+            hintE.GetComponent<Text>().text = "Press E to drop stuff";
             string statueType = name.Split('_')[1];
             Debug.Log(statueType);
             hintE.SetActive(true);
@@ -63,6 +73,8 @@ public class interactWithPlayer : MonoBehaviour
                     }
                 }
             }
+            speedBoost.GetComponent<Text>().text = "Speed Bost: " + speedInvestment.ToString() + "/" + speedInvestNeededToLvl.ToString();
+            jumpBoost.GetComponent<Text>().text = "Jump Bost: " + jumpInvestment.ToString() + "/" + jumpInvestNeededToLvl.ToString();
         }
         else
         {
@@ -72,6 +84,8 @@ public class interactWithPlayer : MonoBehaviour
     private void OnTriggerExit2D(Collider2D collision)
     {
         hintE.SetActive(false);
+       
     }
+
 }   
 
